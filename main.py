@@ -37,7 +37,10 @@ class MainWindow(QMainWindow):
         self.nextui.pushButton_2.clicked.connect(lambda: self.uiStack.setCurrentIndex(1))
         
         self.cameraui = uic.loadUi('./resources/ui/camera.ui')
-        self.cameraui.picbtn.clicked.connect(lambda: self.uiStack.setCurrentIndex(3))
+        def capcam():
+            self.cam = False
+            
+        self.cameraui.picbtn.clicked.connect(capcam)
         def lam():
             self.cam = False
             self.uiStack.setCurrentIndex(3)
@@ -62,12 +65,12 @@ class MainWindow(QMainWindow):
 
     def run_camera(self):
         while self.cam:
-            frame = picam2.get_frame()
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            frame = cv2.flip(frame, 1)
-            frame = cv2.resize(frame, (640, 480))
-            frame = QImage(frame, 640, 480, QImage.Format_RGB888)
-            self.cameraui.camera.setPixmap(QPixmap.fromImage(frame))
+            self.frame = picam2.get_frame()
+            self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
+            self.frame = cv2.flip(self.frame, 1)
+            self.frame = cv2.resize(self.frame, (640, 480))
+            self.frame = QImage(self.frame, 640, 480, QImage.Format_RGB888)
+            self.cameraui.camera.setPixmap(QPixmap.fromImage(self.frame))
             self.cameraui.camera.setScaledContents(True)
             self.cameraui.camera.show()
     def camera(self):
