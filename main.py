@@ -19,7 +19,7 @@ from tensorflow.keras.preprocessing import image
 model = keras.models.load_model('./resources/model/xception_v4_1_09_0.938.h5')
 classes = ['nv', 'cancer', 'Purulent', 'Acne']
 
-picam = Picamera2()
+picam2 = Picamera2()
 picam2.configure(picam2.create_preview_configuration(main={"format": 'XRGB8888', "size": (640, 480)}))
 picam2.start()
 
