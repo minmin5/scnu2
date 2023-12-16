@@ -25,6 +25,7 @@ picam2.start()
 
 class MainWindow(QMainWindow):
     def __init__(self):
+        self.cam = False
         super().__init__()
         self.setWindowTitle('AISCAKI')
         self.uiStack = QStackedWidget()
@@ -85,8 +86,8 @@ class MainWindow(QMainWindow):
     def camera(self):
         self.uiStack.setCurrentIndex(2)
         self.cam = True
-        self.thrd = threading.Thread(target=self.run_camera)
-        self.thrd.start()
+        #self.thrd = threading.Thread(target=self.run_camera)
+        #self.thrd.start()
         
         
 if __name__ == "__main__":
