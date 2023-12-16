@@ -74,15 +74,16 @@ class MainWindow(QMainWindow):
         self.show()
 
     def run_camera(self):
-        while self.cam:
-            self.frame = picam2.get_frame()
-            self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
-            self.frame = cv2.flip(self.frame, 1)
-            self.frame = cv2.resize(self.frame, (640, 480))
-            self.frame = QImage(self.frame, 640, 480, QImage.Format_RGB888)
-            self.cameraui.camera.setPixmap(QPixmap.fromImage(self.frame))
-            self.cameraui.camera.setScaledContents(True)
-            self.cameraui.camera.show()
+        #while self.cam:
+        #    self.frame = picam2.get_frame()
+        #    self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
+        #    self.frame = cv2.flip(self.frame, 1)
+        #    self.frame = cv2.resize(self.frame, (640, 480))
+        #    self.frame = QImage(self.frame, 640, 480, QImage.Format_RGB888)
+        #    self.cameraui.camera.setPixmap(QPixmap.fromImage(self.frame))
+        #    self.cameraui.camera.setScaledContents(True)
+        #    self.cameraui.camera.show()
+        pass
     def camera(self):
         self.uiStack.setCurrentIndex(2)
         self.cam = True
