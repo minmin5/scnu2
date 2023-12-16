@@ -39,6 +39,15 @@ class MainWindow(QMainWindow):
         self.cameraui = uic.loadUi('./resources/ui/camera.ui')
         def capcam():
             self.cam = False
+            img = self.frame
+            img = cv2.resize(img, (150, 150))
+            img = image.img_to_array(img)
+            img = np.expand_dims(img, axis=0)
+            img = img/255.0
+            pred = model.predict(img)
+            pred = np.argmax(pred)
+            print(pred)
+            
             
         self.cameraui.picbtn.clicked.connect(capcam)
         def lam():
